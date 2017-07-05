@@ -328,7 +328,7 @@ export default class Picker extends React.Component {
   }
 
   render() {
-    var { perLine, emojiSize, set, sheetSize, style, title, emoji, color, native, backgroundImageFn, emojisToShowFilter, include, exclude, autoFocus } = this.props,
+    var { perLine, emojiSize, set, sheetSize, style, title, emoji, color, native, backgroundImageFn, emojisToShowFilter, include, exclude, autoFocus, enableSkins } = this.props,
         { skin } = this.state,
         width = (perLine * (emojiSize + 12)) + 12 + 2 + measureScrollbar()
 
@@ -399,6 +399,7 @@ export default class Picker extends React.Component {
             skin: skin,
             onChange: this.handleSkinChange.bind(this)
           }}
+          enableSkins={enableSkins}
         />
       </div>
     </div>
@@ -423,6 +424,7 @@ Picker.propTypes = {
   include: PropTypes.arrayOf(PropTypes.string),
   exclude: PropTypes.arrayOf(PropTypes.string),
   autoFocus: PropTypes.bool,
+  enableSkins: PropTypes.bool,
   custom: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     short_names: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -448,5 +450,6 @@ Picker.defaultProps = {
   backgroundImageFn: Emoji.defaultProps.backgroundImageFn,
   emojisToShowFilter: null,
   autoFocus: false,
+  enableSkins: true,
   custom: [],
 }
